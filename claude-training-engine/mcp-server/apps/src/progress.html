@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Progress</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: var(--font-sans, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
+      padding: 16px 20px;
+      color: var(--color-text-primary, #1a1a2e);
+      background: var(--color-background-primary, #ffffff);
+    }
+    .progress-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .progress-ring {
+      flex-shrink: 0;
+      width: 56px;
+      height: 56px;
+      position: relative;
+    }
+    .progress-ring svg { transform: rotate(-90deg); }
+    .progress-ring .bg { stroke: #e5e7eb; }
+    .progress-ring .fill { stroke: #048A81; transition: stroke-dashoffset 0.6s ease; }
+    .progress-ring .fill.complete { stroke: #059669; }
+    .pct-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--color-text-primary, #1a1a2e);
+    }
+    .progress-info { flex: 1; }
+    .progress-title { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+    .progress-detail { font-size: 13px; color: var(--color-text-secondary, #666); margin-bottom: 8px; }
+    .concept-list { display: flex; gap: 6px; flex-wrap: wrap; }
+    .concept-dot {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 600;
+      color: white;
+      background: #d1d5db;
+      transition: all 0.3s;
+    }
+    .concept-dot.completed { background: #048A81; }
+    .concept-dot.in_progress { background: #f59e0b; animation: pulse 2s infinite; }
+    .concept-dot.not_started { background: #e5e7eb; color: #9ca3af; }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(245,158,11,0.4); }
+      50% { box-shadow: 0 0 0 4px rgba(245,158,11,0); }
+    }
+    .milestone {
+      margin-top: 12px;
+      padding: 10px 14px;
+      background: #ecfdf5;
+      border-radius: 8px;
+      font-size: 13px;
+      color: #065f46;
+      border: 1px solid #a7f3d0;
+      display: none;
+    }
+    .milestone.show { display: block; }
+  </style>
+</head>
+<body>
+  <div class="progress-card">
+    <div class="progress-ring">
+      <svg width="56" height="56" viewBox="0 0 56 56">
+        <circle class="bg" cx="28" cy="28" r="24" fill="none" stroke-width="4" />
+        <circle class="fill" id="ring-fill" cx="28" cy="28" r="24" fill="none" stroke-width="4"
+                stroke-dasharray="150.8" stroke-dashoffset="150.8" stroke-linecap="round" />
+      </svg>
+      <span class="pct-text" id="pct-text">0%</span>
+    </div>
+    <div class="progress-info">
+      <div class="progress-title" id="course-title">Loading...</div>
+      <div class="progress-detail" id="detail"></div>
+      <div class="concept-list" id="concepts"></div>
+    </div>
+  </div>
+  <div class="milestone" id="milestone"></div>
+  <!-- BUNDLE -->
+</body>
+</html>

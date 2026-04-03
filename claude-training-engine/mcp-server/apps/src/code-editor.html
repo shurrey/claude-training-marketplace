@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API Playground</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: var(--font-sans, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
+      padding: 16px 20px;
+      color: var(--color-text-primary, #1a1a2e);
+      background: var(--color-background-primary, #ffffff);
+    }
+    h3 {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .subtitle {
+      font-size: 13px;
+      color: var(--color-text-secondary, #666);
+      margin-bottom: 14px;
+    }
+    .editor-area {
+      position: relative;
+      margin-bottom: 12px;
+    }
+    textarea {
+      width: 100%;
+      min-height: 140px;
+      padding: 12px 14px;
+      border: 1px solid var(--color-border-primary, #ddd);
+      border-radius: 8px;
+      font-family: var(--font-mono, 'Menlo', 'Consolas', monospace);
+      font-size: 13px;
+      line-height: 1.5;
+      resize: vertical;
+      background: var(--color-background-secondary, #f8f9fa);
+      color: var(--color-text-primary, #1a1a2e);
+      outline: none;
+      transition: border-color 0.2s;
+      tab-size: 2;
+    }
+    textarea:focus { border-color: #048A81; }
+    .toolbar {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    button {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-run {
+      background: #048A81;
+      color: white;
+    }
+    .btn-run:hover { background: #037a72; }
+    .btn-run:disabled { background: #9ca3af; cursor: not-allowed; }
+    .btn-clear {
+      background: #e5e7eb;
+      color: #374151;
+    }
+    .btn-clear:hover { background: #d1d5db; }
+    .btn-template {
+      background: #2E4057;
+      color: white;
+    }
+    .btn-template:hover { background: #1e2d3d; }
+    .status-indicator {
+      font-size: 12px;
+      color: var(--color-text-secondary, #666);
+      margin-left: auto;
+    }
+    .status-indicator.running { color: #2563eb; }
+    .status-indicator.success { color: #059669; }
+    .status-indicator.error { color: #dc2626; }
+    .response-area {
+      border: 1px solid var(--color-border-primary, #e5e7eb);
+      border-radius: 8px;
+      overflow: hidden;
+      display: none;
+    }
+    .response-area.show { display: block; }
+    .response-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 14px;
+      background: var(--color-background-secondary, #f3f4f6);
+      border-bottom: 1px solid var(--color-border-primary, #e5e7eb);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--color-text-secondary, #555);
+    }
+    .response-meta { font-weight: 400; color: var(--color-text-tertiary, #888); }
+    .response-body {
+      padding: 12px 14px;
+      font-family: var(--font-mono, 'Menlo', 'Consolas', monospace);
+      font-size: 12px;
+      line-height: 1.5;
+      white-space: pre-wrap;
+      word-break: break-word;
+      max-height: 300px;
+      overflow-y: auto;
+      background: var(--color-background-primary, #fff);
+      color: var(--color-text-primary, #1a1a2e);
+    }
+    .response-body.error-body { color: #dc2626; }
+    .no-key-warning {
+      padding: 12px 16px;
+      background: #fef3c7;
+      border: 1px solid #fde68a;
+      border-radius: 8px;
+      font-size: 13px;
+      color: #92400e;
+      margin-bottom: 12px;
+      display: none;
+    }
+    .no-key-warning.show { display: block; }
+  </style>
+</head>
+<body>
+  <h3>API Playground</h3>
+  <p class="subtitle">Write a request body and run it against the Anthropic Messages API</p>
+
+  <div id="no-key-warning" class="no-key-warning">
+    No API key configured. Use the API Key Setup to add one before making live calls.
+  </div>
+
+  <div class="editor-area">
+    <textarea id="code-input" spellcheck="false" placeholder='{ "model": "claude-sonnet-4-20250514", "max_tokens": 256, "messages": [{ "role": "user", "content": "Hello!" }] }'></textarea>
+  </div>
+
+  <div class="toolbar">
+    <button class="btn-run" id="run-btn">Run Request</button>
+    <button class="btn-template" id="template-btn">Insert Template</button>
+    <button class="btn-clear" id="clear-btn">Clear</button>
+    <span class="status-indicator" id="status"></span>
+  </div>
+
+  <div class="response-area" id="response-area">
+    <div class="response-header">
+      <span>Response</span>
+      <span class="response-meta" id="response-meta"></span>
+    </div>
+    <div class="response-body" id="response-body"></div>
+  </div>
+  <!-- BUNDLE -->
+</body>
+</html>

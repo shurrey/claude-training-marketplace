@@ -1,0 +1,8 @@
+{
+  "name": "course-api-basics",
+  "version": "1.0.0",
+  "description": "Training course: Your First API Call — Learn the fundamentals of the Anthropic Messages API through Socratic dialogue.",
+  "author": {
+    "name": "Scott Hurrey"
+  }
+}

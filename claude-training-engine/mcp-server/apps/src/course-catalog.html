@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course Catalog</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: var(--font-sans, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
+      padding: 24px;
+      color: var(--color-text-primary, #1a1a2e);
+      background: var(--color-background-primary, #ffffff);
+    }
+    h2 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .header-subtitle {
+      font-size: 13px;
+      color: var(--color-text-secondary, #666);
+      margin-bottom: 20px;
+    }
+    .courses { display: flex; flex-direction: column; gap: 12px; }
+    .course-card {
+      border: 1px solid var(--color-border-primary, #e5e7eb);
+      border-radius: 12px;
+      padding: 16px 20px;
+      transition: all 0.2s;
+      background: var(--color-background-primary, #fff);
+    }
+    .course-card:hover { border-color: #048A81; box-shadow: 0 2px 8px rgba(4,138,129,0.1); }
+    .course-card.enrolled { border-left: 4px solid #048A81; }
+    .course-card.completed { border-left: 4px solid #059669; opacity: 0.85; }
+    .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
+    .card-title { font-size: 16px; font-weight: 600; color: var(--color-text-primary, #1a1a2e); }
+    .badge {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .badge-beginner { background: #dbeafe; color: #1e40af; }
+    .badge-intermediate { background: #fef3c7; color: #92400e; }
+    .badge-advanced { background: #fee2e2; color: #991b1b; }
+    .badge-completed { background: #d1fae5; color: #065f46; }
+    .badge-enrolled { background: #e0f2fe; color: #0369a1; }
+    .card-desc { font-size: 14px; color: var(--color-text-secondary, #555); line-height: 1.5; margin-bottom: 12px; }
+    .card-meta { display: flex; gap: 16px; align-items: center; margin-bottom: 12px; }
+    .meta-item { font-size: 12px; color: var(--color-text-tertiary, #888); }
+    .progress-bar {
+      height: 6px;
+      background: #e5e7eb;
+      border-radius: 3px;
+      overflow: hidden;
+      margin-bottom: 8px;
+    }
+    .progress-fill {
+      height: 100%;
+      background: #048A81;
+      border-radius: 3px;
+      transition: width 0.3s;
+    }
+    .progress-fill.complete { background: #059669; }
+    .progress-text { font-size: 12px; color: var(--color-text-secondary, #666); margin-bottom: 12px; }
+    .card-actions { display: flex; gap: 8px; }
+    button {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-enroll { background: #048A81; color: white; }
+    .btn-enroll:hover { background: #037a72; }
+    .btn-resume { background: #2E4057; color: white; }
+    .btn-resume:hover { background: #1e2d3d; }
+    .btn-review { background: #e5e7eb; color: #374151; }
+    .btn-review:hover { background: #d1d5db; }
+    .empty-state {
+      text-align: center;
+      padding: 40px;
+      color: var(--color-text-secondary, #666);
+    }
+    .loading { text-align: center; padding: 40px; color: var(--color-text-secondary, #666); }
+  </style>
+</head>
+<body>
+  <h2>Training Courses</h2>
+  <p class="header-subtitle">Learn Claude technologies through guided, interactive practice</p>
+  <div id="courses" class="courses">
+    <div class="loading">Loading courses...</div>
+  </div>
+  <!-- BUNDLE -->
+</body>
+</html>

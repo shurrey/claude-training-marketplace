@@ -1,0 +1,8 @@
+{
+  "name": "claude-training-engine",
+  "version": "0.1.0",
+  "description": "Interactive, Socratic training platform for Claude technologies. Browse courses, enroll, and learn through guided practice inside Claude itself.",
+  "author": {
+    "name": "Scott Hurrey"
+  }
+}

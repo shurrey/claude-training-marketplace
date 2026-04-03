@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "name": "claude-training-platform",
+  "description": "Interactive Socratic training platform for Claude technologies. Install the engine, browse courses, and learn by doing.",
+  "owner": {
+    "name": "Scott Hurrey"
+  },
+  "plugins": [
+    {
+      "name": "claude-training-engine",
+      "source": "./claude-training-engine",
+      "description": "Socratic training engine with progress tracking, course catalog, and interactive exercises. Install this first, then enroll in courses."
+    },
+    {
+      "name": "course-api-basics",
+      "source": "./courses/course-api-basics",
+      "description": "Course: Your First API Call — Learn the Anthropic Messages API through guided practice."
+    }
+  ]
+}
