@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "name": "claude-training-platform",
+  "name": "claude-training-marketplace",
   "description": "Interactive Socratic training platform for Claude technologies. Install the engine, browse courses, and learn by doing.",
   "owner": {
     "name": "Scott Hurrey"
