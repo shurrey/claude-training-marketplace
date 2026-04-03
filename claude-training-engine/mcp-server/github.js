@@ -6,7 +6,7 @@
  * Installation is handled by `claude plugin install` (not by this module).
  *
  * Marketplace repo layout:
- *   claude-training-platform/
+ *   claude-training-marketplace/
  *     .claude-plugin/marketplace.json
  *     claude-training-engine/          <- engine plugin
  *     courses/
@@ -23,7 +23,7 @@ const COURSE_REPO =
 const GITHUB_API = "https://api.github.com";
 const GITHUB_RAW = "https://raw.githubusercontent.com";
 const BRANCH = process.env.CLAUDE_COURSES_BRANCH || "main";
-const MARKETPLACE_NAME = process.env.CLAUDE_MARKETPLACE_NAME || "claude-training-platform";
+const MARKETPLACE_NAME = process.env.CLAUDE_MARKETPLACE_NAME || "claude-training-marketplace";
 
 // Optional GitHub token for higher rate limits
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN || null;

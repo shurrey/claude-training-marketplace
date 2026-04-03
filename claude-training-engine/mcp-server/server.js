@@ -30162,7 +30162,7 @@ var COURSE_REPO = process.env.CLAUDE_COURSES_REPO || "shurrey/claude-training-ma
 var GITHUB_API = "https://api.github.com";
 var GITHUB_RAW = "https://raw.githubusercontent.com";
 var BRANCH = process.env.CLAUDE_COURSES_BRANCH || "main";
-var MARKETPLACE_NAME = process.env.CLAUDE_MARKETPLACE_NAME || "claude-training-platform";
+var MARKETPLACE_NAME = process.env.CLAUDE_MARKETPLACE_NAME || "claude-training-marketplace";
 var GITHUB_TOKEN = process.env.GITHUB_TOKEN || null;
 function headers() {
   const h = { Accept: "application/vnd.github.v3+json", "User-Agent": "claude-training-engine" };
