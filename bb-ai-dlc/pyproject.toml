@@ -1,0 +1,10 @@
+[project]
+name = "bb-ai-dlc"
+version = "0.1.0"
+description = "AI-DLC Claude Code plugin (derivative of awslabs/aidlc-workflows)"
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+addopts = "-v"
