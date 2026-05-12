@@ -2,6 +2,9 @@
 
 This plugin lives inside a multi-plugin marketplace (parent repo owns
 .claude-plugin/marketplace.json) so the plugin itself only ships plugin.json.
+
+Claude Code auto-discovers commands/, skills/, and hooks/hooks.json from
+conventional paths; the manifest does not declare them explicitly.
 """
 import json
 from pathlib import Path
@@ -14,13 +17,11 @@ def test_plugin_json_parses():
     assert data["name"] == "bb-ai-dlc"
     assert "version" in data
     assert "description" in data
-    assert data["commands"] == "commands"
-    assert data["skills"] == "skills"
-    assert data["hooks"] == "hooks/hooks.json"
+    assert isinstance(data["author"], dict)
+    assert data["author"].get("name")
 
 
-def test_referenced_directories_exist():
-    plugin = json.loads((REPO_ROOT / ".claude-plugin" / "plugin.json").read_text())
-    for key in ("commands", "skills"):
-        assert (REPO_ROOT / plugin[key]).is_dir(), f"{key} dir missing"
-    assert (REPO_ROOT / plugin["hooks"]).is_file(), "hooks.json missing"
+def test_conventional_dirs_exist():
+    """Auto-discovered directories must be present for the plugin to function."""
+    for path in ("commands", "skills", "hooks/hooks.json"):
+        assert (REPO_ROOT / path).exists(), f"missing {path}"
