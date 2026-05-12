@@ -15,6 +15,11 @@
       "name": "course-api-basics",
       "source": "./courses/course-api-basics",
       "description": "Course: Your First API Call — Learn the Anthropic Messages API through guided practice."
+    },
+    {
+      "name": "bb-ai-dlc",
+      "source": "./bb-ai-dlc",
+      "description": "AI-Driven Development Lifecycle (Blackboard derivative of awslabs/aidlc-workflows). Skills for inception/construction/operations phases, slash commands, and a cross-doc consistency hook."
     }
   ]
 }

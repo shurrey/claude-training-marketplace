@@ -1,0 +1,2 @@
+# AIDLC state
+phase: inception

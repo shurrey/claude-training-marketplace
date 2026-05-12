@@ -1,0 +1,10 @@
+{
+  "name": "bb-ai-dlc",
+  "version": "0.1.0",
+  "description": "AI-Driven Development Lifecycle plugin (derivative of awslabs/aidlc-workflows)",
+  "author": "Blackboard",
+  "license": "Apache-2.0",
+  "commands": "commands",
+  "skills": "skills",
+  "hooks": "hooks/hooks.json"
+}

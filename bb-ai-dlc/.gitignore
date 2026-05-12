@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Sync working dirs (sync script may use TMPDIR; nothing should land in repo)
+/tmp-upstream/
+
+# IDE
+.vscode/
+.idea/
+*.swp
